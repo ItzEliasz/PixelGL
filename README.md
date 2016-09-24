@@ -4,3 +4,9 @@ This library transforms instructions into Pixels. You can use this as a surface.
 Also includes a Test Class!
 
 Thanks to ItzDennisz for help!
+
+Features looking forward to add:
+-3D Rotation
+-More Geometry2D
+-Geometry3D
+-some more Tests
