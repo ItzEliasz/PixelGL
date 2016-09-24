@@ -18,6 +18,8 @@
 
 package net.eliasbota.pgl;
 
+package net.eliasbota.pgl;
+
 public class PixelSurface {
 	
 	private static Pixel[][] pixels;
@@ -60,6 +62,7 @@ public class PixelSurface {
 		if(context == true) {
 		return pixels;
 		}
+		PGLError.throwContextError();
 		return null;
 	}
 	
@@ -74,6 +77,8 @@ public class PixelSurface {
 			}
 		}
 		}
+		} else {
+			PGLError.throwContextError();
 		}
 	}
 	
@@ -84,6 +89,8 @@ public class PixelSurface {
 				lastPixels[x][y].setG(g);
 				lastPixels[x][y].setB(b);
 		}
+		} else {
+			PGLError.throwContextError();
 		}
 	}
 	public static void syncColor(int r, int g, int b) {
@@ -97,6 +104,8 @@ public class PixelSurface {
 				}
 			}
 			}
+		} else {
+			PGLError.throwContextError();
 		}
 	}
 
