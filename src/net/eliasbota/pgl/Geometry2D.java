@@ -16,8 +16,6 @@
  * 
  */
 
-package net.eliasbota.pgl;
-
 public class Geometry2D {
 	
 	public static void fillSquare(int x, int y, int z, int cameraZ, int size, int r, int g, int b) {
@@ -34,5 +32,21 @@ public class Geometry2D {
 		}
 		}
 	}
-
+	
+	public static void fillRectangle(int x, int y, int z, int cameraZ, int sizeX, int sizeY, int r, int g, int b) {
+		if(z > cameraZ) {
+		for(int i = x; i < x+sizeX-z; i++) {
+			for(int ii = y; ii < y+sizeY-z; ii++) {
+				if(ii > PixelSurface.getHeight() && i > PixelSurface.getWidth() || ii > PixelSurface.getHeight() || i > PixelSurface.getWidth()) {
+					
+				} else {
+				PixelSurface.CoreFuncChangePixel(i, ii, r, g, b);
+				}
+				
+			}
+		}
+		}
+	}
+	
 }
+
