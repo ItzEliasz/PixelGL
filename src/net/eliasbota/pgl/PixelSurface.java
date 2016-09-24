@@ -18,9 +18,7 @@
 
 package net.eliasbota.pgl;
 
-public class PixelSurface {
-	
-	private static Pixel[][] pixels;
+private static Pixel[][] pixels;
 	private static Pixel[][] lastPixels;
 	
 	private static int widthH, heightT;
@@ -30,8 +28,8 @@ public class PixelSurface {
 		heightT = height;
 		widthH = width;
 		
-		pixels = new Pixel[width][height];
-		lastPixels = new Pixel[width][height];
+		pixels = new Pixel[width+1][height+1];
+		lastPixels = new Pixel[width+1][height+1];
 		
 		int widthIndex = 0, heightIndex = 0;
 		
@@ -85,5 +83,10 @@ public class PixelSurface {
 			}
 	}
 
-
-}
+	public static int getHeight() {
+		return heightT;
+	}
+	
+	public static int getWidth() {
+		return widthH;
+	}
