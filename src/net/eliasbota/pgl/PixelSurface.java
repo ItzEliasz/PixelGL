@@ -18,10 +18,14 @@
 
 package net.eliasbota.pgl;
 
-private static Pixel[][] pixels;
+public class PixelSurface {
+	
+	private static Pixel[][] pixels;
 	private static Pixel[][] lastPixels;
 	
 	private static int widthH, heightT;
+	
+    private static boolean context = false;
 	
 	public static void createSurface(int width, int height) {
 		
@@ -42,17 +46,25 @@ private static Pixel[][] pixels;
 					widthIndex = 0;
 				}
 				}
+		
+		context = true;
 	}
 	
 	public static void update() {
+		if(context == true) {
 		pixels = lastPixels;
+		}
 	}
 	
 	public static Pixel[][] getPixels() {
+		if(context == true) {
 		return pixels;
+		}
+		return null;
 	}
 	
 	public static void cleanPixels() {
+		if(context == true) {
 		for(int i = 0; i < widthH; i++) {
 		for(int ii = 0; ii < heightT; ii++) {
 			if(lastPixels[i][ii] != null) {
@@ -62,16 +74,20 @@ private static Pixel[][] pixels;
 			}
 		}
 		}
+		}
 	}
 	
 	public static void CoreFuncChangePixel(int x, int y, int r, int g, int b) {
+		if(context == true) {
 		if(lastPixels[x][y] != null) {
 				lastPixels[x][y].setR(r);
 				lastPixels[x][y].setG(g);
 				lastPixels[x][y].setB(b);
 		}
+		}
 	}
 	public static void syncColor(int r, int g, int b) {
+		if(context == true) {
 		for(int i = 0; i < widthH; i++) {
 			for(int ii = 0; ii < heightT; ii++) {
 				if(lastPixels[i][ii] != null) {
@@ -81,8 +97,13 @@ private static Pixel[][] pixels;
 				}
 			}
 			}
+		}
 	}
 
+	public static boolean getContext() {
+		return context;
+	}
+	
 	public static int getHeight() {
 		return heightT;
 	}
@@ -90,3 +111,6 @@ private static Pixel[][] pixels;
 	public static int getWidth() {
 		return widthH;
 	}
+
+
+}
