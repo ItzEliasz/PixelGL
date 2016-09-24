@@ -42,12 +42,15 @@ public class Main {
 		
 		PixelSurface.createSurface(800, 600);
 		
+		int pointer = 0;
+		
 		while(working) {
-			    Geometry2D.fillSquare(40, 80, 20, 1, 0, 1);
-			    Geometry2D.fillSquare(80, 80, 30, 1, 0, 1);
+			    Geometry2D.fillSquare(4+pointer, 20+pointer, -80+pointer, -150, 20, 1, 0, 1);
+			    Geometry2D.fillSquare(80+pointer, 80+pointer, -10-pointer, -150, 50, 1, 0, 1);
 				PixelSurface.update();
 			    render();
 			    PixelSurface.cleanPixels();
+			    pointer++;
 		}
 	}
 	
