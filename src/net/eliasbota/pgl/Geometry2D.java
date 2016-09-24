@@ -20,15 +20,18 @@ package net.eliasbota.pgl;
 
 public class Geometry2D {
 	
-	public static void fillSquare(int x, int y, int size, int r, int g, int b) {
-		for(int i = x; i < x+size; i++) {
-			for(int ii = y; ii < y+size; ii++) {
+	public static void fillSquare(int x, int y, int z, int cameraZ, int size, int r, int g, int b) {
+		if(z > cameraZ) {
+		for(int i = x; i < x+size-z; i++) {
+			for(int ii = y; ii < y+size-z; ii++) {
 				if(ii > PixelSurface.getHeight() && i > PixelSurface.getWidth() || ii > PixelSurface.getHeight() || i > PixelSurface.getWidth()) {
 					
 				} else {
 				PixelSurface.CoreFuncChangePixel(i, ii, r, g, b);
 				}
+				
 			}
+		}
 		}
 	}
 
