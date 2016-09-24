@@ -10,5 +10,5 @@ Public Releases and the Website will be out as soon as we enter Alpha 1.0
 
 #Credits
 
-Bota Elias - Code
-Dennis - Code Help
+- Bota Elias - Code -
+Dennis - Code Help -
