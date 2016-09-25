@@ -32,6 +32,33 @@ public class PGL {
 		Memory.getPixelMemory(id).setSize(sizeX, sizeY);
 	}
 	
+	public static void wireframeSquare(int x, int y, int size, int r, int g, int b) {
+		line(x, y, x, y + size, r, g, b);
+		line(x, y, x + size, y, r, g, b);
+		line(x + size, y, x + size, y + size, r, g, b);
+		line(x, y + size, x + size, y + size, r, g, b);
+	}
+	
+	public static void wireframeRectangle(int x, int y, int sizeX, int sizeY, int r, int g, int b) {
+		line(x, y, x, y + sizeY, r, g, b);
+		line(x, y, x + sizeX, y, r, g, b);
+		line(x + sizeX, y, x + sizeX, y + sizeY, r, g, b);
+		line(x, y + sizeY, x + sizeX, y + sizeY, r, g, b);
+	}
+	
+	public static void wireframeTriangle(int x, int y, int size, int r, int g, int b) {
+		line(x, y, x - size, y+size, r, g, b);
+		line(x, y, x + size, y+size, r, g, b);
+		line(x - size, y+size, x+size, y+size, r, g, b);
+	}
+	
+	public static void wireframeParallelogram(int x, int y, int size, int r, int g, int b) {
+		line(x, y, x + size, y, r, g, b);
+		line(x, y, x - size/2, y + size, r, g, b);
+		line(x-size/2, y+size, x+size, y+size, r, g, b);
+		line(x+size, y, x + size, y + size, r, g, b);
+	}
+	
 	public static void line(int x, int y, int x2, int y2, int r, int g, int b) {
 		int w = x2 - x ;
 	    int h = y2 - y ;
