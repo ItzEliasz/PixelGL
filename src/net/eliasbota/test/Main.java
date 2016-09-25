@@ -42,11 +42,17 @@ public class Main {
 		
 		PixelSurface.createSurface(800, 600);
 		
+		int pointer = 0;
+		
 		while(working) {
-			    PGL.line(30, 30, 60, 60, 1, 0, 1);
-			    PixelSurface.update();
+			    PGL.wireframeTriangle(10+pointer, 100, 70, 1, 1, 1);
+			    PGL.wireframeSquare(100+pointer, 100, 50, 1, 0, 1);
+			    PGL.wireframeParallelogram(70, 10+pointer, 80, 0, 0, 1);
+			    PGL.wireframeRectangle(50, 50, 100, 50, 1, 1, 0);
+				PixelSurface.update();
 			    render();
 			    PixelSurface.cleanPixels();
+			    pointer++;
 		}
 	}
 	
