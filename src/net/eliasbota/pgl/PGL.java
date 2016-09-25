@@ -49,7 +49,7 @@ public class PGL {
 	    }
 	    int numerator = longest >> 1 ;
 	    for (int i=0;i<=longest;i++) {
-	    	if(y > PixelSurface.getHeight() && x > PixelSurface.getWidth() || y > PixelSurface.getHeight() || x > PixelSurface.getWidth() || y < 0 && i < 0 || x < 0 || i < 0 || y > PixelSurface.getHeight() && x < 0 || x < 0 && y > PixelSurface.getHeight() || y > PixelSurface.getHeight() || x > PixelSurface.getWidth()) {
+	    	if(y > PixelSurface.getHeight() && x > PixelSurface.getWidth() || y > PixelSurface.getHeight() || x > PixelSurface.getWidth() || y < 0 && x < 0 || x < 0 || y < 0 || y > PixelSurface.getHeight() && x < 0 || x < 0 && y > PixelSurface.getHeight() || y > PixelSurface.getHeight() || x > PixelSurface.getWidth()) {
 	    		 						
 	        } else {
 	        PixelSurface.CoreFuncChangePixel(x, y, r, g, b);
