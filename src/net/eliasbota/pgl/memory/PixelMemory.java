@@ -1,6 +1,7 @@
 /**
  * 
  *  Copyright (C) 2016 Bota Elias & Dennis van Giessen
+
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
@@ -47,11 +48,20 @@ public class PixelMemory {
 				}
 	}
 	
-	public static Pixel[][] getPixels() {
+	public Pixel[][] getPixels() {
 		return pixData;
 	}
 	
-	public static void cleanPixels() {
+	public void setPixels(Pixel[][] pixelS) {
+		pixData = pixelS;
+	}
+	
+	public void setSize(int sizeXX, int sizeYY) {
+		sizeX = sizeXX;
+		sizeY = sizeYY;
+	}
+	
+	public void cleanPixels() {
 		for(int i = 0; i < sizeX; i++) {
 		for(int ii = 0; ii < sizeY; ii++) {
 			if(pixData[i][ii] != null) {
@@ -63,14 +73,14 @@ public class PixelMemory {
 		}
 	}
 	
-	public static void CoreFuncChangePixel(int x, int y, int r, int g, int b) {
+	public void CoreFuncChangePixel(int x, int y, int r, int g, int b) {
 		if(pixData[x][y] != null) {
 				pixData[x][y].setR(r);
 				pixData[x][y].setG(g);
 				pixData[x][y].setB(b);
 		}
 	}
-	public static void syncColor(int r, int g, int b) {
+	public void syncColor(int r, int g, int b) {
 		for(int i = 0; i < sizeX; i++) {
 			for(int ii = 0; ii < sizeY; ii++) {
 				if(pixData[i][ii] != null) {
