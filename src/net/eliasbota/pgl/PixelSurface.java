@@ -18,8 +18,6 @@
 
 package net.eliasbota.pgl;
 
-package net.eliasbota.pgl;
-
 public class PixelSurface {
 	
 	private static Pixel[][] pixels;
