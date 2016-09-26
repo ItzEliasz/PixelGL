@@ -64,6 +64,12 @@ public class PGL {
 		}
 	}
 	
+	public static void polygon(Point[] points, int r, int g, int b) {
+		for(Point point : points) {
+			line(point.getMyX(), point.getMyY(), point.getTargetX(), point.getTargetY(), r, g, b);
+		}
+	}
+	
 	public static void wireframeRectangle(int x, int y, int sizeX, int sizeY, int r, int g, int b) {
 		line(x, y, x, y-1 + sizeY, r, g, b);
 		line(x, y, x + sizeX, y, r, g, b);
