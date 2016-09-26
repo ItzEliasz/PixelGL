@@ -32,35 +32,12 @@ public class PGL {
 		Memory.getPixelMemory(id).setSize(sizeX, sizeY);
 	}
 	
-	public static void wireframeSquare(int x, int y, int size, int r, int g, int b) {
-		line(x, y, x, y - 1 + size, r, g, b);
-		line(x, y, x + size, y, r, g, b);
-		line(x + size, y, x + size, y-1 + size, r, g, b);
-		line(x, y-1 + size, x + size, y + size-1, r, g, b);
-	}
-	
-	public static void fillSquare(int x, int y, int size, int r, int g, int b) {
-		for(int i = x; i < x+size; i++) {
-			for(int ii = y; ii < y+size; ii++) {
-					if(ii > PixelSurface.getHeight() && i > PixelSurface.getWidth() || ii > PixelSurface.getHeight() || i > PixelSurface.getWidth() || ii < 0 && i < 0 || ii < 0 || i < 0 || ii > PixelSurface.getHeight() && i < 0 || ii < 0 && i > PixelSurface.getHeight() || ii > PixelSurface.getHeight() || i > PixelSurface.getWidth()) {
-						
-					} else {
-					PixelSurface.CoreFuncChangePixel(i, ii, r, g, b);
-					}
-			}
-		}
-	}
-	
-	public static void fillRectangle(int x, int y, int sizeX, int sizeY, int r, int g, int b) {
-		for(int i = x; i < x+sizeX; i++) {
-			for(int ii = y; ii < y+sizeY; ii++) {
-				if(ii > PixelSurface.getHeight() && i > PixelSurface.getWidth() || ii > PixelSurface.getHeight() || i > PixelSurface.getWidth() || ii < 0 && i < 0 || ii < 0 || i < 0 || ii > PixelSurface.getHeight() && i < 0 || ii < 0 && i > PixelSurface.getHeight() || ii > PixelSurface.getHeight() || i > PixelSurface.getWidth()) {
-					
-				} else {
-				PixelSurface.CoreFuncChangePixel(i, ii, r, g, b);
-				}
-				
-			}
+	public static void wireframeSquare(int x, int y, int z, int zCamera, int size, int r, int g, int b) {
+		if(size-z >= zCamera) {
+		line(x, y, x, y - 1 + size-z, r, g, b);
+		line(x, y, x + size-z, y, r, g, b);
+		line(x + size-z, y, x + size-z, y-1 + size-z, r, g, b);
+		line(x, y-1 + size-z, x + size-z, y + size-z-1, r, g, b);
 		}
 	}
 	
@@ -70,24 +47,59 @@ public class PGL {
 		}
 	}
 	
-	public static void wireframeRectangle(int x, int y, int sizeX, int sizeY, int r, int g, int b) {
-		line(x, y, x, y-1 + sizeY, r, g, b);
-		line(x, y, x + sizeX, y, r, g, b);
-		line(x + sizeX, y, x + sizeX, y-1 + sizeY, r, g, b);
-		line(x, y-1 + sizeY, x + sizeX, y-1 + sizeY, r, g, b);
+	public static void fillSquare(int x, int y, int z, int zCamera, int size, int r, int g, int b) {
+		if(z >= zCamera) {
+		for(int i = x; i < x+size-z; i++) {
+			for(int ii = y; ii < y+size-z; ii++) {
+					if(ii > PixelSurface.getHeight() && i > PixelSurface.getWidth() || ii > PixelSurface.getHeight() || i > PixelSurface.getWidth() || ii < 0 && i < 0 || ii < 0 || i < 0 || ii > PixelSurface.getHeight() && i < 0 || ii < 0 && i > PixelSurface.getHeight() || ii > PixelSurface.getHeight() || i > PixelSurface.getWidth()) {
+						
+					} else {
+					PixelSurface.CoreFuncChangePixel(i, ii, r, g, b);
+					}
+			}
+		}
+		}
 	}
 	
-	public static void wireframeTriangle(int x, int y, int size, int r, int g, int b) {
-		line(x, y, x - size, y+size, r, g, b);
-		line(x, y, x + size, y+size, r, g, b);
-		line(x - size, y+size, x+size, y+size, r, g, b);
+	public static void fillRectangle(int x, int y, int z, int zCamera, int sizeX, int sizeY, int r, int g, int b) {
+		if(z >= zCamera) {
+		for(int i = x; i < x+sizeX-z; i++) {
+			for(int ii = y; ii < y+sizeY-z; ii++) {
+				if(ii > PixelSurface.getHeight() && i > PixelSurface.getWidth() || ii > PixelSurface.getHeight() || i > PixelSurface.getWidth() || ii < 0 && i < 0 || ii < 0 || i < 0 || ii > PixelSurface.getHeight() && i < 0 || ii < 0 && i > PixelSurface.getHeight() || ii > PixelSurface.getHeight() || i > PixelSurface.getWidth()) {
+					
+				} else {
+				PixelSurface.CoreFuncChangePixel(i, ii, r, g, b);
+				}
+				
+			}
+		}
+		}
 	}
 	
-	public static void wireframeParallelogram(int x, int y, int size, int r, int g, int b) {
-		line(x, y, x + size, y, r, g, b);
-		line(x, y, x - size/2, y + size, r, g, b);
-		line(x-size/2, y+size, x+size, y+size, r, g, b);
-		line(x+size, y, x + size, y + size, r, g, b);
+	public static void wireframeRectangle(int x, int y, int z, int zCamera, int sizeX, int sizeY, int r, int g, int b) {
+		if(z >= zCamera) {
+		line(x, y, x, y-1 + sizeY-z, r, g, b);
+		line(x, y, x + sizeX-z, y, r, g, b);
+		line(x + sizeX-z, y, x + sizeX-z, y-1 + sizeY-z, r, g, b);
+		line(x, y-1 + sizeY-z, x + sizeX-z, y-1 + sizeY-z, r, g, b);
+		}
+	}
+	
+	public static void wireframeTriangle(int x, int y, int z, int zCamera, int size, int r, int g, int b) {
+		if(z >= zCamera) {
+		line(x, y, x - size-z, y+size-z, r, g, b);
+		line(x, y, x + size-z, y+size-z, r, g, b);
+		line(x - size-z, y+size-z, x+size-z, y+size-z, r, g, b);
+		}
+	}
+	
+	public static void wireframeParallelogram(int x, int y, int z, int zCamera, int size, int r, int g, int b) {
+		if(z >= zCamera) {
+		line(x, y, x + size-z, y, r, g, b);
+		line(x, y, x - size/2-z, y + size-z, r, g, b);
+		line(x-size/2-z, y+size-z, x+size-z, y+size-z, r, g, b);
+		line(x+size-z, y, x + size-z, y + size-z, r, g, b);
+		}
 	}
 	
 	public static void line(int x, int y, int x2, int y2, int r, int g, int b) {
