@@ -6,7 +6,7 @@ Also includes a Test Class!
 
 #Releases
 
-PixelGL is currently only in Pre-Alpha 1.3<br />
+PixelGL is currently only in Pre-Alpha 1.4<br />
 Public Releases and the Website will be out as soon as we enter Alpha 1.0
 
 #Credits
