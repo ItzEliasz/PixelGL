@@ -32,6 +32,14 @@ public class PGL {
 		Memory.getPixelMemory(id).setSize(sizeX, sizeY);
 	}
 	
+	public static void translate(int x, int y, int id) {
+		for(Pixel[] pix : Memory.getPixelMemory(id).getPixels()) {
+			for(Pixel pixel : pix) {
+				PixelSurface.CoreFuncChangePixel(pixel.getX() + x, pixel.getY() + y, pixel.getR(), pixel.getG(), pixel.getB());
+			}
+		}
+	}
+	
 	public static void wireframeSquare(int x, int y, int z, int zCamera, int size, int r, int g, int b) {
 		if(size-z >= zCamera) {
 		line(x, y, x, y - 1 + size-z, r, g, b);
