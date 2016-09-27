@@ -9,6 +9,7 @@ package net.eliasbota.test;
 
 import java.awt.Canvas;
 
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -19,6 +20,7 @@ import javax.swing.JFrame;
 import net.eliasbota.pgl.PGL;
 import net.eliasbota.pgl.PixelSurface;
 import net.eliasbota.pgl.Point;
+import net.eliasbota.pgl.memory.Memory;
 import net.eliasbota.pgl.Pixel;
 
 public class Main {
@@ -48,15 +50,20 @@ public class Main {
 		Point[] testPoints = new Point[1];
 		testPoints[0] = new Point(10, 10, 50, 50);
 		
+		Memory.addPixelMemory(200, 200, 1);
+		
 		while(working) {
 			    PGL.wireframeTriangle(10+pointer, 100, 20, -450, 70, 1, 1, 1);
 			    PGL.wireframeParallelogram(70, 10+pointer, 20, -450, 80, 0, 0, 1);
 			    PGL.wireframeRectangle(50, 50, 20, -450, 100, 50, 1, 1, 0);
 			    PGL.fillRectangle(151, 50, 20, -450, 100, 50, 1, 1, 1);
 			    PGL.polygon(testPoints, 1, 1, 0);
+			    Memory.getPixelMemory(1).syncColor(1, 1, 1);
+			    PGL.translate(200, 200, 1);
 				PixelSurface.update();
 			    render();
 			    PixelSurface.cleanPixels();
+			    Memory.getPixelMemory(1).cleanPixels();
 			    pointer++;
 		}
 	}
