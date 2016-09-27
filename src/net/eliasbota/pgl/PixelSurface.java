@@ -80,12 +80,12 @@ public class PixelSurface {
 		}
 	}
 	
-	public static void CoreFuncChangePixel(int x, int y, int r, int g, int b) {
+	public static void CoreFuncChangePixel(int x, int y, float f, float g, float h) {
 		if(context == true) {
 		if(lastPixels[x][y] != null) {
-				lastPixels[x][y].setR(r);
+				lastPixels[x][y].setR(f);
 				lastPixels[x][y].setG(g);
-				lastPixels[x][y].setB(b);
+				lastPixels[x][y].setB(h);
 		}
 		} else {
 			PGLError.throwContextError();
